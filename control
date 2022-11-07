@@ -1,6 +1,6 @@
 Source: tacacs+
 Section: net
-Priority: extra
+Priority: optional
 Maintainer: Debian QA Group <packages@qa.debian.org>
 Build-Depends:
  bison,
@@ -11,7 +11,8 @@ Build-Depends:
  flex,
  libpam0g-dev,
  libwrap0-dev,
-Standards-Version: 3.9.8
+Standards-Version: 4.6.1.0
+Rules-Requires-Root: no
 Homepage: http://www.shrubbery.net/tac_plus/
 Vcs-Git: https://anonscm.debian.org/git/collab-maint/tacacs+.git
 Vcs-Browser: https://anonscm.debian.org/git/collab-maint/tacacs+.git
