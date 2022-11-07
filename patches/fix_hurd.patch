@@ -1,0 +1,24 @@
+Description: Fix FTBFS in hurd
+Last-Update: 2016-09-27
+
+--- a/configure
++++ b/configure
+@@ -3166,6 +3166,18 @@
+         $as_echo "#define MIPS 1" >>confdefs.h
+ 
+     ;;
++    *gnu* )
++	# XXX: not sure if /usr/local is necessary.
++	# XXX: linux libwrap needs -lnsl. configure should check for
++	#      existence of libnsl instead of hard-coding
++	CPPFLAGS="$CPPFLAGS $CFLAGS -I/usr/local/include"; export CPPFLAGS
++	LDFLAGS="$LDFLAGS -L/usr/local/lib -L/lib"; export LDFLAGS
++	LIBS="-lnsl -lcrypt $LIBS"; export LIBS
++        cat >>confdefs.h <<\_ACEOF
++#define LINUX 1
++_ACEOF
++
++    ;;
+     * )
+ 	CPPFLAGS="$CPPFLAGS $CFLAGS -I/usr/local/include"; export CPPFLAGS
+ 	LDFLAGS="$LDFLAGS -L/usr/local/lib"; export LDFLAGS

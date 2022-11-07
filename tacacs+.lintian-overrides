@@ -1,0 +1,2 @@
+# This is because that file contains secrets that are better not be world-readable
+tacacs+: non-standard-file-perm etc/tacacs+/tac_plus.conf 0600 != 0644

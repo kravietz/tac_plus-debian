@@ -1,0 +1,22 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+
+%:
+	dh $@
+
+override_dh_installinit:
+	dh_installinit --name=tacacs_plus
+
+override_dh_install-arch:
+	dh_install -a
+	chrpath -c $(CURDIR)/debian/tacacs+/usr/sbin/tac_plus
+
+override_dh_fixperms-arch:
+	dh_fixperms -a
+	chmod -v 600 $(CURDIR)/debian/tacacs+/etc/tacacs+/tac_plus.conf
+
+override_dh_auto_configure:
+	dh_auto_configure -- --bindir=\$${prefix}/sbin --libdir=\$${prefix}/lib/$(DEB_HOST_MULTIARCH)/tacacs\
+                --enable-acls --enable-uenable --enable-maxsess --enable-finger
