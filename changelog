@@ -1,3 +1,9 @@
+tacacs+ (4.0.4.27a-0.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+
+ -- Pawel Krawczyk <p+debian@krvtz.net>  Mon, 07 Nov 2022 21:16:00 +0100
+
 tacacs+ (4.0.4.27a-3) unstable; urgency=medium
 
   * QA upload.
